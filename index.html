@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Raya Ravi — Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent:#6a11cb;
+      --accent-2:#2575fc;
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-blur: 10px;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --text: #e6eef8;
+      --max-width: 1100px;
+    }
+    :root.light {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --muted: #556070;
+      --glass: rgba(15,23,36,0.03);
+      --glass-2: rgba(15,23,36,0.02);
+      --glass-border: rgba(15,23,36,0.06);
+      --text: #071029;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(99,102,241,0.12), transparent 8%),
+                  radial-gradient(900px 500px at 90% 90%, rgba(37,117,252,0.08), transparent 10%),
+                  var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding-bottom:60px;
+    }
+    .container{ max-width:var(--max-width); margin:0 auto; padding:28px; }
+
+    /* Header / Nav */
+    header{ position:sticky; top:12px; z-index:40; display:flex; justify-content:center; pointer-events:none; }
+    .nav-wrap{ width:100%; max-width:var(--max-width); pointer-events:all; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:10px 16px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px; border:1px solid var(--glass-border); backdrop-filter: blur(6px); box-shadow: 0 6px 30px rgba(2,6,23,0.45); }
+    .brand{ display:flex; gap:12px; align-items:center; }
+    .logo{ width:64px; height:64px; border-radius:12px; background: linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; color:white; font-weight:700; font-family: "Space Grotesk", sans-serif; box-shadow: 0 6px 18px rgba(37,117,252,0.12); overflow:hidden; }
+    .logo img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .brand h1{ margin:0; font-size:16px; letter-spacing:0.2px; }
+    nav ul{ list-style:none; margin:0; padding:0; display:flex; gap:12px; align-items:center; }
+    nav a{ color:var(--text); text-decoration:none; padding:8px 12px; border-radius:8px; font-weight:600; opacity:0.95; transition: all .18s ease; }
+    nav a:hover{ transform:translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+    .cta{ display:inline-flex; gap:8px; align-items:center; background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; padding:8px 14px; border-radius:10px; text-decoration:none; font-weight:700; box-shadow: 0 8px 30px rgba(99,102,241,0.12); }
+
+    /* Hero */
+    .hero{ min-height:72vh; display:grid; grid-template-columns: 1fr 420px; gap:28px; align-items:center; margin-top:28px; }
+    .hero-left{ padding:28px; }
+    .eyebrow{ display:inline-block; background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px; margin-bottom:18px; }
+    h2.hero-title{ margin:0 0 12px 0; font-size:40px; line-height:1.02; font-weight:800; letter-spacing:-0.6px; font-family: "Space Grotesk", sans-serif; }
+    p.lead{ margin:0 0 18px 0; color:var(--muted); max-width:60ch; font-size:16px; }
+    .hero-actions{ display:flex; gap:12px; align-items:center; margin-top:12px; }
+    .btn{ display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; cursor:pointer; border: none; }
+    .btn-primary{ background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; box-shadow: 0 10px 30px rgba(37,117,252,0.12); }
+    .btn-ghost{ background:transparent; color:var(--text); border:1px solid var(--glass-border); backdrop-filter: blur(6px); }
+
+    /* Hero card */
+    .hero-card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:16px; padding:18px; border:1px solid var(--glass-border); backdrop-filter: blur(var(--glass-blur)); box-shadow: 0 10px 40px rgba(2,6,23,0.5); }
+    .profile{ display:flex; gap:14px; align-items:center; }
+    .avatar{ width:84px; height:84px; border-radius:14px; background: linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:28px; box-shadow: 0 8px 30px rgba(99,102,241,0.12); overflow:hidden; }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .profile h3{ margin:0; font-size:18px; }
+    .profile p{ margin:2px 0 0 0; color:var(--muted); font-size:13px; }
+    .meta{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .meta a{ color:var(--muted); text-decoration:none; font-weight:600; font-size:13px; padding:8px 10px; border-radius:10px; background:var(--glass-2); border:1px solid var(--glass-border); }
+
+    /* Sections */
+    section{ margin-top:44px; padding:28px; border-radius:14px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid var(--glass-border); backdrop-filter: blur(6px); }
+    section h2{ margin:0 0 18px 0; font-size:20px; font-weight:800; font-family: "Space Grotesk", sans-serif; }
+
+    /* About */
+    .about-grid{ display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+    .about-card{ padding:18px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid var(--glass-border); }
+    .timeline{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+    .timeline li{ background:var(--glass-2); padding:12px; border-radius:10px; border:1px solid var(--glass-border); color:var(--muted); font-weight:600; }
+
+    /* Projects */
+    .project-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px; }
+    .project{ padding:18px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid var(--glass-border); transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s; }
+    .project:hover{ transform: translateY(-10px) scale(1.01); box-shadow: 0 20px 60px rgba(2,6,23,0.6); }
+    .project h3{ margin:0 0 8px 0; font-size:16px; }
+    .project p{ margin:0 0 12px 0; color:var(--muted); font-size:14px; }
+    .tech-list{ display:flex; gap:8px; flex-wrap:wrap; }
+    .chip{ padding:6px 8px; border-radius:999px; background:var(--glass-2); border:1px solid var(--glass-border); color:var(--muted); font-weight:700; font-size:12px; }
+
+    /* Project image */
+    .project-img{ width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px; border:1px solid var(--glass-border); }
+
+    /* Files list */
+    .files-list{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+    .file-btn{ padding:8px 10px; border-radius:8px; background:transparent; border:1px solid var(--glass-border); color:var(--muted); cursor:pointer; font-weight:700; }
+
+    /* Skills */
+    .skills-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap:12px; }
+    .skill{ padding:12px; border-radius:10px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid var(--glass-border); }
+    .skill h4{ margin:0 0 8px 0; font-size:14px; }
+    .bar{ height:10px; background:var(--glass-2); border-radius:999px; overflow:hidden; border:1px solid var(--glass-border); }
+    .bar > i{ display:block; height:100%; background: linear-gradient(90deg,var(--accent),var(--accent-2)); border-radius:999px; width:0%; transition: width .9s cubic-bezier(.2,.9,.2,1); }
+
+    /* Contact */
+    .contact-grid{ display:grid; grid-template-columns: 1fr 360px; gap:18px; }
+    form{ display:flex; flex-direction:column; gap:12px; }
+    input, textarea{ padding:12px; border-radius:10px; border:1px solid var(--glass-border); background:transparent; color:var(--text); outline:none; resize:vertical; }
+    button[type="submit"]{ padding:12px 14px; border-radius:10px; border:none; background: linear-gradient(90deg,var(--accent),var(--accent-2)); color:white; font-weight:700; cursor:pointer; }
+    .socials{ display:flex; gap:10px; flex-wrap:wrap; }
+
+    footer{ margin-top:28px; text-align:center; color:var(--muted); font-size:13px; }
+
+    /* Modal viewer */
+    .modal {
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000;
+      background: rgba(2,6,23,0.6);
+      padding:20px;
+    }
+    .modal.open{ display:flex; }
+    .modal-card{
+      width:100%; max-width:980px; height:80vh; background:var(--card); border-radius:12px; overflow:hidden; border:1px solid var(--glass-border); box-shadow: 0 30px 80px rgba(2,6,23,0.7);
+      display:flex; flex-direction:column;
+    }
+    .modal-header{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--glass-border); }
+    .modal-body{ flex:1; background:#000; display:flex; align-items:center; justify-content:center; }
+    .modal-body iframe, .modal-body object, .modal-body img{ width:100%; height:100%; border:0; display:block; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{ grid-template-columns: 1fr; padding-bottom:10px; }
+      .about-grid, .contact-grid{ grid-template-columns: 1fr; }
+      header{ padding:12px; }
+      .nav-wrap{ flex-direction:column; align-items:stretch; gap:10px; }
+      .modal-card{ height:70vh; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap container" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <!-- Replace this image with your profile photo (recommended size: 300x300) -->
+          <img id="profilePhoto" src="profile.jpeg" alt="Raya Ravi profile photo" onerror="this.style.display='block'; this.parentElement.textContent='RR'">
+        </div>
+        <div>
+          <h1 class="logo-title">Raya Ravi</h1>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">PEGA CSSA · Data Analytics & ML Enthusiast</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Hire Me</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section id="home" class="hero" aria-labelledby="home-heading">
+      <div class="hero-left">
+        <div class="eyebrow">Open to opportunities</div>
+        <h2 id="home-heading" class="hero-title">Hi, I'm <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">Raya Ravi</span><br><span style="font-size:18px;color:var(--muted);font-weight:600">B.Tech CSE • PEGA CSSA • Power BI • ML</span></h2>
+        <p class="lead">I build production-ready Pega applications, data visualizations, and machine learning solutions. I combine strong engineering fundamentals with practical product thinking to deliver measurable impact.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-ghost" href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Profile card">
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">
+            <!-- fallback if profile image missing -->
+            <img id="avatarSmall" src="profile.jpeg" alt="Raya Ravi" onerror="this.style.display='none'">
+          </div>
+          <div>
+            <h3>Raya Ravi</h3>
+            <p>PEGA Certified Senior System Architect · Python · SQL · Power BI</p>
+            <div class="meta" style="margin-top:10px">
+              <a href="https://www.linkedin.com/in/raya-ravi-b98158253/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://github.com/RayaRavi" id="githubLink" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="#contact">Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <strong style="display:block;margin-bottom:8px">Quick facts</strong>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <div style="background:var(--glass-2);padding:8px;border-radius:8px;border:1px solid var(--glass-border);font-weight:700;color:var(--muted)">B.Tech CSE (2021–2025)</div>
+            <div style="background:var(--glass-2);padding:8px;border-radius:8px;border:1px solid var(--glass-border);font-weight:700;color:var(--muted)">CGPA: 9.01</div>
+            <div style="background:var(--glass-2);padding:8px;border-radius:8px;border:1px solid var(--glass-border);font-weight:700;color:var(--muted)">Pega & Data Analytics</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Me</h2>
+      <div class="about-grid">
+        <div>
+          <p style="color:var(--muted);margin-top:6px">
+            I'm a Computer Science graduate at Lakireddy Bali Reddy College of Engineering (2021–2025) with a strong academic record and hands-on experience building enterprise Pega applications, data visualizations in Power BI, and machine learning models for healthcare and detection tasks. I enjoy turning complex problems into elegant, maintainable solutions and communicating results through clear dashboards and reports.
+          </p>
+
+          <h3 style="margin-top:18px;font-size:16px">Education</h3>
+          <div class="about-card" style="margin-top:10px">
+            <ul class="timeline">
+              <li><strong>Lakireddy Bali Reddy College of Engineering</strong> — B.Tech, Computer Science & Engineering (2021–2025). <span style="float:right;font-weight:800">CGPA: 9.01</span></li>
+              <li><strong>Kakaraparthi Bhavanarayana Junior College</strong> — Board of Intermediate Education (MPC) (2019–2021). <span style="float:right">96.2%</span></li>
+              <li><strong>Annapurna Devi Municipal Corporation High School</strong> — SSC (2019). <span style="float:right">GPA: 9.3</span></li>
+            </ul>
+          </div>
+
+          <h3 style="margin-top:18px;font-size:16px">Certifications</h3>
+          <div class="about-card" style="margin-top:10px">
+            <ul style="margin:0;padding-left:18px;color:var(--muted)">
+              <!-- Each certification has a data-file attribute pointing to assets/certs/filename -->
+              <li><button class="file-btn" data-cert="Pega-CSA.jpg">PEGA Certified System Architect (CSA) — v23</button></li>
+              <li><button class="file-btn" data-cert="Pega-CSSA.jpg">PEGA Certified Senior System Architect (CSSA) — v23</button></li>
+              <li><button class="file-btn" data-cert="DataAnalytics.jpg">Data Analytics with Python</button></li>
+              <li><button class="file-btn" data-cert="Iot.pdf">Internet of Things</button></li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size:15px;margin-bottom:8px">Links</h3>
+          <div class="about-card">
+            <p style="margin:0 0 8px 0;color:var(--muted)"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/raya-ravi-b98158253/" target="_blank" rel="noopener noreferrer">linkedin.com/in/raya-ravi-b98158253</a></p>
+            <p style="margin:0 0 8px 0;color:var(--muted)"><strong>GitHub:</strong> <a href="https://github.com/RayaRavi" target="_blank" rel="noopener noreferrer">github.com/RayaRavi</a></p>
+          </div>
+
+          <h3 style="font-size:15px;margin-top:14px;margin-bottom:8px">Tools & Platforms</h3>
+          <div class="about-card">
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="chip">Pega Infinity v23</div>
+              <div class="chip">Power BI</div>
+              <div class="chip">Tableau</div>
+              <div class="chip">VS Code</div>
+              <div class="chip">GitHub</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects & Work</h2>
+      <div class="project-grid" id="projectGrid">
+        <!-- Project cards are generated by JS from the `projectsData` array -->
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><h4>PEGA Infinity (v23)</h4><div class="bar" data-value="95"><i></i></div></div>
+        <div class="skill"><h4>Python</h4><div class="bar" data-value="88"><i></i></div></div>
+        <div class="skill"><h4>Machine Learning</h4><div class="bar" data-value="82"><i></i></div></div>
+        <div class="skill"><h4>Power BI</h4><div class="bar" data-value="90"><i></i></div></div>
+        <div class="skill"><h4>SQL & Databases</h4><div class="bar" data-value="84"><i></i></div></div>
+        <div class="skill"><h4>Java & C</h4><div class="bar" data-value="76"><i></i></div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--muted)">I'm actively looking for opportunities and freelance collaborations. Use the form to send a message or reach out directly via email or LinkedIn.</p>
+
+          <form id="contactForm" novalidate>
+            <input
+  id="name"
+  name="name"
+  type="text"
+  placeholder="Your name"
+  autocomplete="name"
+  required
+>
+
+<input
+  id="email"
+  name="email"
+  type="email"
+  placeholder="Your email"
+  autocomplete="email"
+  required
+>
+
+<input
+  id="subject"
+  name="subject"
+  type="text"
+  placeholder="Subject (e.g., Job opportunity)"
+  autocomplete="off"
+  required
+>
+
+<textarea
+  id="message"
+  name="message"
+  rows="6"
+  placeholder="Your message"
+  autocomplete="off"
+  required
+></textarea>
+
+            <button type="submit">Send message</button>
+            <div id="formStatus" style="margin-top:8px;color:var(--muted);font-size:13px"></div>
+          </form>
+        </div>
+
+        <aside>
+          <div class="about-card">
+            <h4 style="margin-top:0">Contact details</h4>
+            <p style="margin:6px 0;color:var(--muted)"><strong>Email:</strong> <a id="contactEmail" href="mailto:rayaravi03@gmail.com" style="color:var(--text)">rayaravi03@gmail.com</a></p>
+            <p style="margin:6px 0;color:var(--muted)"><strong>Phone:</strong> +91-7337073547</p>
+            <p style="margin:6px 0;color:var(--muted)"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/raya-ravi-b98158253/" target="_blank" rel="noopener noreferrer">linkedin.com/in/raya-ravi-b98158253</a></p>
+            <p style="margin:6px 0;color:var(--muted)"><strong>Location:</strong> Vijayawada, Andhra Pradesh, India</p>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin-bottom:8px">Other Certificates & Works</h4>
+            <div class="about-card">
+              <ul style="margin:0;padding-left:18px;color:var(--muted)">
+                <li><button class="file-btn" data-cert="Salesforce_AIAssociate.pdf">AI Associate</button></li>
+                <li><button class="file-btn" data-cert="PBI_HR_Sales_Report.pdf">Power BI Report</button></li>
+                <li><button class="file-btn" data-cert="salesforce_developer_superset.pdf">Salesforce Developer Superset</button></li>
+                <li><button class="file-btn" data-cert="gdsc-cloud.pdf">GDSC Cloud</button></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:center;gap:12px;align-items:center;margin-bottom:8px">
+        <button id="themeToggle" class="btn btn-ghost" aria-pressed="false">Toggle Dark / Light</button>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/raya-ravi-b98158253/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn btn-ghost" id="downloadResume" href="#" title="View resume">View Resume (on page)</a>
+      </div>
+      <div>© <strong>Raya Ravi</strong> · Built with care · Last updated <span id="year"></span></div>
+    </footer>
+  </main>
+
+  <!-- Modal viewer for project files & certifications -->
+  <div id="viewerModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <div class="modal-header">
+        <div id="viewerTitle" style="font-weight:800"></div>
+        <div>
+          <button id="openInNew" class="btn btn-ghost" style="margin-right:8px">Open in new tab</button>
+          <button id="closeModal" class="btn btn-ghost">Close</button>
+        </div>
+      </div>
+      <div class="modal-body" id="viewerBody">
+        <!-- content injected here: iframe/object/img -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------
+    // Projects data (edit/add)
+    // -------------------------
+    // For each project: title, description, image (optional), files (array of {name, path})
+    // Place images in assets/projects/ and files in assets/projects/
+    const projectsData = [
+      {
+        id: "fraud-pega",
+        title: "Fraud Detection using Pega — Global Presentation Usecase",
+        description: "Led a team to design and implement a Pega application for an insurance use case that manages policy creation, customer records, and integrates fraud detection through case management, decision rules, and data validation to ensure accurate processing and approvals.",
+        //image: "assets/Projects/fraud-pega.jpg", // optional
+        files: [
+          { name: "Case Study ", path: "FD_Case-study.pdf" },
+          { name: "Presentation ", path: "FD-PPT.pdf" }
+        ],
+        tech: ["Pega", "Case Management", "Business Rules", "Web Services"]
+      },
+      {
+        id: "melanoma-cnn-vit",
+        title: "Hybrid CNN + ViT for Melanoma Skin Cancer Detection",
+        description: "Developed a hybrid deep learning pipeline combining CNNs for local feature extraction and Vision Transformers for global context to improve melanoma detection from dermoscopic images. Focused on preprocessing, augmentation, model ensembling, and evaluation.",
+        //image: "assets/Projects/melanoma-sample.jpg",
+        files: [
+          { name: "Model Report ", path: "Melanoma_Report.pdf" }
+        ],
+        tech: ["Python", "TensorFlow", "CNN", "Vision Transformer"]
+      },
+      {
+        id: "wavex-powerbi",
+        title: "WaveX Data Insights — Power BI Dashboards",
+        description: "Built end-to-end Power BI solutions: data discovery, ETL, data modeling with advanced DAX, and interactive dashboards to surface actionable insights. Integrated multiple data sources and created KPI-driven visualizations for stakeholders.",
+        //image: "assets/Projects/wavex-dashboard.jpg",
+        files: [
+          { name: "Dashboard ", path: "WaveX.jpeg" }
+        ],
+        tech: ["Power BI", "DAX", "Data Modeling"]
+      },
+      {
+        id: "practice",
+        title: "Other Work & Practice",
+        description: "Competitive programming (300+ CodeChef problems), HackerRank badges (Python 4★), and multiple online courses in Data Analytics and Big Data.",
+        
+        tech: ["Algorithms", "SQL", "Data Analytics"]
+      }
+    ];
+
+    // -------------------------
+    // Render projects
+    // -------------------------
+    const projectGrid = document.getElementById('projectGrid');
+    function createProjectCard(p){
+      const card = document.createElement('article');
+      card.className = 'project';
+      card.setAttribute('aria-labelledby', p.id);
+
+      // image (if exists)
+      if(p.image){
+        const img = document.createElement('img');
+        img.className = 'project-img';
+        img.src = p.image;
+        img.alt = p.title + " screenshot";
+        img.onerror = function(){ this.style.display = 'none'; };
+        card.appendChild(img);
+      }
+
+      const h = document.createElement('h3');
+      h.id = p.id;
+      h.textContent = p.title;
+      card.appendChild(h);
+
+      const desc = document.createElement('p');
+      desc.textContent = p.description;
+      card.appendChild(desc);
+
+      // tech chips
+      const techWrap = document.createElement('div');
+      techWrap.className = 'tech-list';
+      p.tech.forEach(t=>{
+        const span = document.createElement('span');
+        span.className = 'chip';
+        span.textContent = t;
+        techWrap.appendChild(span);
+      });
+      card.appendChild(techWrap);
+
+      // files
+      if(p.files && p.files.length){
+        const filesWrap = document.createElement('div');
+        filesWrap.className = 'files-list';
+        p.files.forEach(f=>{
+          const btn = document.createElement('button');
+          btn.className = 'file-btn';
+          btn.textContent = f.name;
+          btn.dataset.path = f.path;
+          btn.dataset.title = p.title + " — " + f.name;
+          btn.addEventListener('click', ()=> openViewer(btn.dataset.path, btn.dataset.title));
+          filesWrap.appendChild(btn);
+        });
+        card.appendChild(filesWrap);
+      }
+
+      return card;
+    }
+
+    projectsData.forEach(p => projectGrid.appendChild(createProjectCard(p)));
+
+    // -------------------------
+    // Viewer modal logic
+    // -------------------------
+    const viewerModal = document.getElementById('viewerModal');
+    const viewerBody = document.getElementById('viewerBody');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const openInNew = document.getElementById('openInNew');
+    const closeModal = document.getElementById('closeModal');
+
+    function openViewer(path, title){
+      // sanitize path and title (basic)
+      viewerTitle.textContent = title || path;
+      viewerBody.innerHTML = '';
+
+      // If path is an external link (starts with http), open in iframe
+      const isExternal = /^https?:\/\//i.test(path);
+
+      // Determine file type by extension
+      const ext = (path.split('.').pop() || '').toLowerCase();
+
+      // Supported inline types: pdf, png, jpg, jpeg, gif, html
+      if(ext === 'pdf' || isExternal && path.toLowerCase().includes('.pdf')){
+        const obj = document.createElement('object');
+        obj.data = path;
+        obj.type = 'application/pdf';
+        obj.style.width = '100%';
+        obj.style.height = '100%';
+        obj.innerHTML = '<p>PDF preview not available. <a target="_blank" rel="noopener">Open in new tab</a></p>';
+        viewerBody.appendChild(obj);
+      } else if(['png','jpg','jpeg','gif','webp'].includes(ext) || isExternal && /\.(png|jpe?g|gif|webp)$/i.test(path)){
+        const img = document.createElement('img');
+        img.src = path;
+        img.alt = title || 'file';
+        img.style.objectFit = 'contain';
+        viewerBody.appendChild(img);
+      } else if(ext === 'html' || isExternal && /\.html?$/i.test(path)){
+        const iframe = document.createElement('iframe');
+        iframe.src = path;
+        iframe.style.border = '0';
+        viewerBody.appendChild(iframe);
+      } else {
+        // For unsupported types (e.g., pbix) show a message and provide open-in-new
+        const msg = document.createElement('div');
+        msg.style.padding = '20px';
+        msg.style.color = 'var(--muted)';
+        msg.innerHTML = `<p style="margin:0 0 8px 0">Preview not available for this file type.</p><p style="margin:0">You can open it in a new tab or download it.</p>`;
+        viewerBody.appendChild(msg);
+      }
+
+      // set openInNew link
+      openInNew.onclick = () => window.open(path, '_blank', 'noopener');
+
+      viewerModal.classList.add('open');
+      viewerModal.setAttribute('aria-hidden', 'false');
+      // trap focus (basic)
+      closeModal.focus();
+    }
+
+    closeModal.addEventListener('click', ()=> {
+      viewerModal.classList.remove('open');
+      viewerModal.setAttribute('aria-hidden', 'true');
+      viewerBody.innerHTML = '';
+    });
+
+    // close on overlay click
+    viewerModal.addEventListener('click', (e)=>{
+      if(e.target === viewerModal) { closeModal.click(); }
+    });
+
+    // -------------------------
+    // Theme toggle and small UI helpers
+    // -------------------------
+    (function initUI(){
+      const yearEl = document.getElementById('year');
+      if(yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // animate skill bars
+      document.querySelectorAll('.bar').forEach(b=>{
+        const v = b.dataset.value || 0;
+        const i = b.querySelector('i');
+        if(i) setTimeout(()=> i.style.width = v + '%', 300);
+      });
+
+      // theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      themeToggle && themeToggle.addEventListener('click', ()=>{
+        document.documentElement.classList.toggle('light');
+        const pressed = themeToggle.getAttribute('aria-pressed') === 'true';
+        themeToggle.setAttribute('aria-pressed', String(!pressed));
+      });
+
+      // file buttons (certs)
+      document.querySelectorAll('.file-btn[data-cert]').forEach(btn=>{
+        btn.addEventListener('click', ()=> {
+          const path = btn.dataset.cert;
+          const title = btn.textContent || 'File';
+          openViewer(path, title);
+        });
+      });
+    })();
+
+    // -------------------------
+    // EmailJS contact form integration
+    // -------------------------
+    // === Replace these with your real EmailJS values ===
+    const EMAILJS_USER_ID     = "EtWNlMBN8cWpHtgAc";   // Public Key / User ID (e.g., user_xxx or public_xxx)
+    const EMAILJS_SERVICE_ID  = "service_wrcl2cp";   // Service ID (e.g., service_xxx)
+    const EMAILJS_TEMPLATE_ID = "template_tgj8o7b";  // Template ID (e.g., template_xxx)
+
+    // Load EmailJS SDK dynamically (only when needed)
+    function loadEmailJs(userId){
+      return new Promise((resolve, reject) => {
+        if(window.emailjs) { resolve(window.emailjs); return; }
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js';
+
+        s.onload = () => {
+          if(window.emailjs) {
+            try { window.emailjs.init({ publicKey: userId,});} catch(e) { /* ignore init error */ }
+            resolve(window.emailjs);
+          } else {
+            reject(new Error('EmailJS failed to load'));
+          }
+        };
+        s.onerror = () => reject(new Error('EmailJS script load error'));
+        document.head.appendChild(s);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        if(!name || !email || !subject || !message){
+          status.textContent = 'Please fill all fields.';
+          return;
+        }
+
+        status.textContent = 'Sending message...';
+
+        // Check if placeholders have been replaced
+        const configured = EMAILJS_USER_ID && EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID &&
+                           !EMAILJS_USER_ID.includes('PASTE_') &&
+                           !EMAILJS_SERVICE_ID.includes('PASTE_') &&
+                           !EMAILJS_TEMPLATE_ID.includes('PASTE_');
+
+        if(configured){
+          try {
+            await loadEmailJs(EMAILJS_USER_ID);
+            const templateParams = {
+              from_name: name,
+              from_email: email || "noreply@portfolio.com",
+              subject: subject,
+              message: message,
+              to_email: 'rayaravi03@gmail.com'
+            };
+            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+            status.textContent = 'Message sent. Thank you!';
+            form.reset();
+          } catch(err) {
+            console.error('EmailJS error:', err);
+            status.textContent = 'Sending failed. Opening your email client as fallback.';
+            // fallback to mailto
+            window.location.href = `mailto:rayaravi03@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+message)}`;
+          }
+        } else {
+          // Fallback: open user's email client
+          status.textContent = 'Email service not configured. Opening your email client.';
+          window.location.href = `mailto:rayaravi03@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('From: '+name+' ('+email+')\n\n'+message)}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
