@@ -1,0 +1,166 @@
+% ============================================================
+%  Raya Ravi — Resume
+%  Compile with XeLaTeX (Overleaf: Menu -> Compiler -> XeLaTeX)
+% ============================================================
+\documentclass[10pt]{article}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,
+            top=0in,bottom=0.08in,left=0.417in,right=0.417in]{geometry}
+\usepackage{changepage}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+% ---------- Fonts (Carlito = metric-compatible with Calibri, used in the
+% original PDF's embedded fonts) ----------
+\setmainfont{Carlito}
+
+% ---------- Colors (sampled from the original resume) ----------
+\definecolor{navy}{RGB}{23,34,60}
+\definecolor{accentblue}{RGB}{31,92,138}
+\definecolor{graytext}{RGB}{68,68,68}
+\definecolor{divider}{RGB}{191,191,191}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  urlcolor=navy,
+  citecolor=navy,
+  pdftitle={Raya Ravi - Resume},
+  pdfauthor={Raya Ravi}
+}
+
+\setlength{\parindent}{0pt}
+\linespread{0.92}
+
+% ---------- Section heading style ----------
+\titleformat{\section}
+  {\color{navy}\bfseries\fontsize{11.3}{12.5}\selectfont}
+  {}{0em}{}
+  [\vspace{0pt}{\color{divider}\hrule height 0.8pt}\vspace{1.2pt}]
+\titlespacing*{\section}{0pt}{2pt}{0.8pt}
+
+% ---------- Custom list ----------
+\newlist{tightitemize}{itemize}{1}
+\setlist[tightitemize]{leftmargin=15pt, itemsep=0pt, topsep=0.5pt, label=\textbullet}
+
+% ---------- Helper: entry row with right-aligned italic date/tag ----------
+\newcommand{\entryrow}[3]{%
+  \noindent\begin{tabularx}{\dimexpr\linewidth}{@{}X r@{}}
+    \textbf{#1} & {\fontsize{9}{10.5}\selectfont\itshape\color{graytext}#2}\\
+  \end{tabularx}%
+  #3
+}
+
+\begin{document}
+\pagestyle{empty}
+
+% ================= HEADER (full-bleed navy band) =================
+\noindent\hspace*{-0.417in}%
+\colorbox{navy}{%
+  \begin{minipage}[t]{\paperwidth}
+    \color{white}
+    \vspace{3pt}
+    \hspace{0.417in}%
+    \begin{minipage}{\dimexpr\paperwidth-0.834in}
+      {\fontsize{25}{27}\selectfont\bfseries Raya Ravi}\\[4pt]
+      {\fontsize{10.5}{13}\selectfont TIBCO BusinessWorks $|$ Pega CSA \& CSSA Certified $|$ Claude Certified $|$ AWS Certified AI Practitioner $|$ TCS ASE}\\[3pt]
+      {\fontsize{9.5}{12}\selectfont
+        \href{mailto:rayaravi03@gmail.com}{\color{white}rayaravi03@gmail.com} $|$
+        \href{https://www.linkedin.com/in/raya-ravi-b98158253/}{\color{white}linkedin.com/in/raya-ravi-b98158253} $|$
+        \href{https://github.com/RayaRavi}{\color{white}github.com/RayaRavi} $|$
+        Hyderabad, India $|$
+        Portfolio: \href{https://rayaravi.github.io/My-Portfolio/}{\color{white}rayaravi.github.io/My-Portfolio/}
+      }
+    \end{minipage}
+    \vspace{2pt}
+  \end{minipage}%
+}
+
+\vspace{2pt}
+\fontsize{9.0}{10.1}\selectfont
+
+% ================= PROFESSIONAL SUMMARY =================
+\section{PROFESSIONAL SUMMARY}
+B.Tech CSE graduate and TCS ASE (EAI Domain, CBG Cluster) who has completed ILP training in TIBCO BusinessWorks 5.x at TCS ESU Hyderabad. Trained in integration process design, JMS messaging, REST/SOAP web services, XSLT/XPath data transformation, and fault-tolerant error handling. Holds triple Claude global certifications — Developer, Architect, and Associate (Foundations) — dual Pega global certifications (CSA \& CSSA v23), and the AWS Certified AI Practitioner credential, credentialed by Anthropic, Pega Academy, and Amazon Web Services respectively. Proficient in Python, Power BI, machine learning, and SQL. Collaborative team player with demonstrated leadership, time management, and problem-solving skills. Eager to contribute as an entry-level developer in enterprise software and automation environments.
+
+% ================= EDUCATION =================
+\section{EDUCATION}
+\entryrow{B.Tech, Computer Science \& Engineering — Lakireddy Bali Reddy College of Engineering (LBRCE)}{2021 -- 2025}{}
+CGPA: 9.01 / 10 $|$ Affiliated to JNTU Kakinada
+
+\vspace{2pt}
+\entryrow{Intermediate MPC — Kakaraparti Bhavanarayana Jr. College}{2019 -- 2021}{}
+Percentage: 96.2\%
+
+% ================= CERTIFICATIONS =================
+\section{CERTIFICATIONS}
+\textbf{\color{navy}Anthropic:} Claude Certified Developer, Claude Certified Architect \& Claude Certified Associate — Foundations (Global Certifications)\\[2pt]
+\textbf{\color{navy}Pega Academy:} Pega CSA v23 — Certified System Architect \& Pega CSSA v23 — Certified Senior System Architect (Global Certifications)\\[2pt]
+\textbf{\color{navy}Amazon Web Services (AWS):} AWS Certified AI Practitioner (Global Certification)\\[2pt]
+\textbf{\color{navy}NPTEL:} Data Analytics with Python; Internet of Things (IoT)
+
+% ================= TRAINING & EXPERIENCE =================
+\section{TRAINING \& EXPERIENCE}
+\entryrow{ASE — EAI Domain, CBG Cluster (ILP Training Completed)}{Feb 2026 -- Jun 2026}{}
+{\fontsize{9}{10.5}\selectfont\itshape\color{accentblue} Tata Consultancy Services (TCS) $|$ ESU ILP — Hyderabad, Adibatla}
+\begin{tightitemize}
+\item Completed TIBCO BusinessWorks 5.x ILP training — designed integration process flows, configured HTTP/HTTPS transport adapters, and implemented JMS-based asynchronous messaging.
+\item Built and consumed REST and SOAP web services within TIBCO BW process flows; applied XSLT and XPath for data transformation and message mapping between source and target schemas.
+\item Learned and applied error handling, retry logic, and fault-tolerant design patterns within TIBCO BW — applicable to enterprise integration scenarios.
+\end{tightitemize}
+
+% ================= PROJECTS =================
+\section{PROJECTS}
+
+\entryrow{Melanoma Skin Cancer Detection — CNN + ViT Hybrid Model}{Python, TensorFlow, Vision Transformer, Flask}{}
+\begin{tightitemize}
+\item Led the team in designing and implementing a hybrid deep learning model combining CNN and Vision Transformer (ViT) for melanoma skin cancer binary classification — improving diagnostic accuracy over standalone models.
+\item Built custom Patches and PatchEncoder layers for ViT integration; deployed model as a Flask web application with image upload and real-time prediction; presented research paper accepted at ICICT conference.
+\end{tightitemize}
+
+\entryrow{Fraud Detection System — Pega Global Presentation Use Case}{Pega Infinity v23, BPM, Business Rules, Case Management}{}
+\begin{tightitemize}
+\item Led the team in designing and presenting a Fraud Detection use case using Pega as part of a global-level TCS presentation — architected case stages, decision rules, and automated escalation workflows.
+\item Configured business rules engine with decision tables to classify and route fraud alerts; demonstrated end-to-end case lifecycle management and stakeholder reporting in App Studio.
+\end{tightitemize}
+
+\entryrow{IBPS SO IT Officer 2026 — Complete Preparation Platform}{\href{https://ibps.soit.workers.dev/}{Live Website $\nearrow$}}{}
+\begin{tightitemize}
+\item Built and deployed a full end-to-end preparation platform (\href{https://ibps.soit.workers.dev/}{ibps.soit.workers.dev}) for the IBPS Specialist Officer (IT) 2026 exam, featuring a smart dashboard, structured study material, and an interactive quiz engine.
+\item Implemented a fact-check system, a spaced revision toolkit, performance analytics, and a personalized study planner to help aspirants track progress and target weak areas.
+\item Used Claude-assisted development for architecture planning, implementation support, debugging, and iterative refinement across the platform.
+\end{tightitemize}
+
+\entryrow{Retail Sales and Customer Performance Analysis}{Python, SQL, MySQL, Power BI, DAX, Excel, ETL}{}
+\begin{tightitemize}
+\item Developed an end-to-end Retail Sales Analytics solution using Python, SQL, MySQL, Excel, and Power BI by building an automated ETL pipeline, performing data cleaning, feature engineering, and KPI engineering to transform raw retail data into actionable business insights.
+\item Designed a relational MySQL database and optimized SQL business queries, implemented Star Schema data modeling, and built an interactive Power BI executive dashboard with DAX measures, customer segmentation, profitability analysis, and regional performance reporting for data-driven decision making.
+\end{tightitemize}
+
+% ================= TECHNICAL SKILLS =================
+\section{TECHNICAL SKILLS}
+\textbf{TIBCO BW 5.x:} Integration Process Design, HTTP/HTTPS Connectors, JMS Messaging, REST \& SOAP Web Services, XSLT/XPath Transformation, Error Handling \& Retry Logic\\[2pt]
+\textbf{Pega Platform:} Pega Infinity v23, Case Management, Business Rules Engine, Decision Tables, App Studio / Dev Studio, REST Connectors\\[2pt]
+\textbf{Programming:} Python, Java, C, SQL\\[2pt]
+\textbf{Data \& Analytics:} Power BI, DAX, ETL Pipelines, Star Schema Modeling, Machine Learning, TensorFlow, SQL Optimization, MySQL, Excel\\[2pt]
+\textbf{Cloud \& AI:} AWS Certified AI Practitioner, Generative AI, Claude AI, Prompt Engineering, LLM Fundamentals, AI System Design, Responsible AI\\[2pt]
+\textbf{Soft Skills:} Leadership, Team Collaboration, Time Management, Problem Solving, Presentation \& Communication
+
+% ================= ACHIEVEMENTS =================
+\section{ACHIEVEMENTS \& HIGHLIGHTS}
+\begin{tightitemize}
+\item AWS Certified AI Practitioner — validated foundational knowledge of AI/ML concepts and AWS cloud AI services.
+\item Secured 1st Prize in CodeBingo at Lakshya — annual technical fest of LBRCE, competing in programming challenges.
+\item Led team as Project Leader for Melanoma Detection research — paper accepted at ICICT international conference.
+\item Triple Claude global certified (Developer + Architect + Associate, Foundations) — Anthropic certifications in Claude/Generative AI.
+\item Dual Pega global certified (CSA + CSSA v23) — internationally recognized credentials in Pega BPM and process automation.
+\item Achieved 9.01 CGPA in B.Tech CSE and 96.2\% in Intermediate — consistent top academic performer.
+\end{tightitemize}
+
+\end{document}
